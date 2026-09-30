@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#edf1f3">
+  <title>Minha Agenda</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="cartao">
+    <header class="topo">
+      <svg class="icone" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="3" y="5" width="34" height="32" rx="7" fill="#dfe8f5"/>
+        <path d="M3 12a7 7 0 0 1 7-7h20a7 7 0 0 1 7 7v3H3z" fill="#3f7fd6"/>
+        <g fill="#7f97bd">
+          <circle cx="11" cy="22" r="2"/><circle cx="20" cy="22" r="2"/><circle cx="29" cy="22" r="2"/>
+          <circle cx="11" cy="30" r="2"/><circle cx="20" cy="30" r="2"/><circle cx="29" cy="30" r="2"/>
+        </g>
+      </svg>
+      <div>
+        <h1>Minha Agenda</h1>
+        <p class="sub">Gerencie suas tarefas diárias</p>
+      </div>
+    </header>
+
+    <form id="form" class="form" novalidate>
+      <div class="campo c-tarefa">
+        <label for="titulo">Tarefa</label>
+        <input id="titulo" type="text" maxlength="80" placeholder="Ex.: Comprar materiais" autocomplete="off">
+      </div>
+      <div class="campo">
+        <label for="data">Prazo para concluir</label>
+        <input id="data" type="date">
+      </div>
+      <div class="campo">
+        <label for="hora">Horário</label>
+        <input id="hora" type="time">
+      </div>
+      <div class="campo">
+        <label for="prioridade">Prioridade</label>
+        <select id="prioridade">
+          <option value="baixa">Baixa</option>
+          <option value="normal" selected>Normal</option>
+          <option value="alta">Alta</option>
+        </select>
+      </div>
+      <button type="submit" class="btn" id="btnSalvar">Adicionar</button>
+      <button type="button" class="btn-sec" id="btnCancelar" hidden>Cancelar edição</button>
+      <p class="erro" id="erro" role="alert" hidden></p>
+    </form>
+
+    <section class="busca" aria-label="Buscar tarefas">
+      <div class="campo b-texto">
+        <label for="buscaTexto">Buscar por atividade</label>
+        <input id="buscaTexto" type="search" placeholder="Digite o nome da tarefa...">
+      </div>
+      <div class="campo">
+        <label for="buscaData">Buscar por prazo</label>
+        <input id="buscaData" type="date">
+      </div>
+      <div class="campo">
+        <label for="buscaPrio">Buscar por prioridade</label>
+        <select id="buscaPrio">
+          <option value="">Todas as prioridades</option>
+          <option value="baixa">Baixa</option>
+          <option value="normal">Normal</option>
+          <option value="alta">Alta</option>
+        </select>
+      </div>
+    </section>
+
+    <nav class="abas" role="tablist" aria-label="Listas">
+      <button role="tab" class="aba ativa" data-aba="todas" aria-selected="true">Todas</button>
+      <button role="tab" class="aba" data-aba="pendentes" aria-selected="false">Pendentes</button>
+      <button role="tab" class="aba" data-aba="concluidas" aria-selected="false">Concluídas</button>
+      <button role="tab" class="aba" data-aba="lixeira" aria-selected="false">Lixeira</button>
+    </nav>
+
+    <div class="resumo">
+      <span id="resumo" aria-live="polite"></span>
+      <button type="button" class="link" id="btnLimpar">Limpar concluídas</button>
+    </div>
+
+    <ul class="lista" id="lista"></ul>
+    <p class="vazio" id="vazio" hidden></p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
